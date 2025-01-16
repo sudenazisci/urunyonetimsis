@@ -1,0 +1,58 @@
+﻿@model UrunYonetimSenaryosu.Models.Table
+
+@{
+    ViewBag.Title = "Ürün Düzenleme";
+}
+
+<div class="container mt-4" style="background-color: #343a40; padding: 30px; border-radius: 15px; color: #f8f9fa;">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-lg" style="background-color: #212529; border: none; border-radius: 12px;">
+                <div class="card-header bg-dark text-white text-center" style="border-radius: 10px 10px 0 0;">
+                    <h4 class="mb-0" style="font-family: 'Arial', sans-serif; font-weight: bold;">Ürün Düzenleme</h4>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.UrunId)
+
+                        <!-- Ürün Adı -->
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.UrunAdı, htmlAttributes: new { @class = "form-label text-light" })
+                            @Html.TextBoxFor(model => model.UrunAdı, new { @class = "form-control", placeholder = "Ürün Adını Giriniz", required = "required" })
+                            @Html.ValidationMessageFor(model => model.UrunAdı, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Fiyat -->
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Fiyat, htmlAttributes: new { @class = "form-label text-light" })
+                            @Html.TextBoxFor(model => model.Fiyat, new { @class = "form-control", placeholder = "Fiyat Bilgisini Giriniz", required = "required" })
+                            @Html.ValidationMessageFor(model => model.Fiyat, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Stok Miktarı -->
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.StokMiktarı, htmlAttributes: new { @class = "form-label text-light" })
+                            @Html.TextBoxFor(model => model.StokMiktarı, new { @class = "form-control", placeholder = "Stok Miktarını Giriniz", required = "required" })
+                            @Html.ValidationMessageFor(model => model.StokMiktarı, "", new { @class = "text-danger" })
+                        </div>
+
+                        <!-- Kaydet ve Geri Dön Butonları -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success me-3" style="font-weight: bold; border-radius: 25px;">
+                                <i class="fas fa-save"></i> Kaydet
+                            </button>
+                            @Html.ActionLink("Geri Dön", "Index", null,
+                                new { @class = "btn btn-secondary btn-sm", @title = "Ana Sayfaya Dön", style = "font-weight: bold; border-radius: 25px;" })
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<UrunYonetimSenaryosu.Models.Table>
+
+@{
+    ViewBag.Title = "Ürün Yönetimi";
+}
+
+<div class="container mt-4" style="background-color: #343a40; padding: 30px; border-radius: 15px; color: #f8f9fa;">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center mb-4 text-warning" style="font-family: 'Arial', sans-serif; font-weight: bold; font-size: 36px;">Ürün Yönetimi</h2>
+
+            <!-- Ürün Ekle Butonu -->
+            <div class="text-end mb-3">
+                @Html.ActionLink("Ürün Ekle", "Create", null, new { @class = "btn btn-success btn-lg" })
+            </div>
+
+            <!-- Tablo Kartı -->
+            <div class="card shadow-lg" style="background-color: #212529; border: none; border-radius: 12px;">
+                <div class="card-header bg-gradient text-white">
+                    <h5 class="mb-0" style="font-family: 'Arial', sans-serif; font-size: 20px;">Ürün Listesi</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover" style="color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.UrunAdı)</th>
+                                <th>@Html.DisplayNameFor(model => model.Fiyat)</th>
+                                <th>@Html.DisplayNameFor(model => model.StokMiktarı)</th>
+                                <th>Aksiyonlar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr style="border-bottom: 1px solid #6c757d;">
+                                    <td>@Html.DisplayFor(modelItem => item.UrunAdı)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Fiyat)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.StokMiktarı)</td>
+                                    <td>
+                                        <div class="d-flex justify-content-start">
+                                            @Html.ActionLink("Güncelle", "Edit", new { id = item.UrunId },
+                                                new { @class = "btn btn-warning btn-sm me-2", @title = "Güncelle", style = "border-radius: 25px; font-weight: bold;" })
+                                            @Html.ActionLink("Listele", "Details", new { id = item.UrunId },
+                                                new { @class = "btn btn-info btn-sm me-2", @title = "Detaylar", style = "border-radius: 25px; font-weight: bold;" })
+                                            @Html.ActionLink("Sil", "Delete", new { id = item.UrunId },
+                                                new { @class = "btn btn-danger btn-sm", @title = "Sil", style = "border-radius: 25px; font-weight: bold;" })
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

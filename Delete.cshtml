@@ -1,0 +1,57 @@
+﻿@model UrunYonetimSenaryosu.Models.Table
+
+@{
+    ViewBag.Title = "Ürün Silme";
+}
+
+<div class="container mt-4" style="background-color: #343a40; padding: 30px; border-radius: 15px; color: #f8f9fa;">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-lg" style="background-color: #212529; border: none; border-radius: 12px;">
+                <div class="card-header bg-danger text-white text-center" style="border-radius: 10px 10px 0 0;">
+                    <h4 class="mb-0" style="font-family: 'Arial', sans-serif; font-weight: bold;">Ürün Silme</h4>
+                </div>
+                <div class="card-body">
+                    <p class="text-danger fw-bold" style="font-size: 1.2em;">
+                        Bu ürünü silmek istediğinize emin misiniz? İşlem geri alınamaz.
+                    </p>
+                    <dl class="row" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        <dt class="col-sm-4 text-muted">
+                            @Html.DisplayNameFor(model => model.UrunAdı)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.UrunAdı)
+                        </dd>
+
+                        <dt class="col-sm-4 text-muted">
+                            @Html.DisplayNameFor(model => model.Fiyat)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Fiyat)
+                        </dd>
+
+                        <dt class="col-sm-4 text-muted">
+                            @Html.DisplayNameFor(model => model.StokMiktarı)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.StokMiktarı)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-center" style="border-radius: 0 0 10px 10px;">
+                    <div class="d-flex justify-content-center">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-danger btn-sm me-3" style="font-weight: bold; border-radius: 25px;">
+                                <i class="fas fa-trash"></i> Sil
+                            </button>
+                            @Html.ActionLink("Geri Dön", "Index", null,
+                                new { @class = "btn btn-secondary btn-sm", @title = "Ana Sayfaya Dön", style = "font-weight: bold; border-radius: 25px;" })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

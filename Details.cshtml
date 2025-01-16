@@ -1,0 +1,49 @@
+﻿@model UrunYonetimSenaryosu.Models.Table
+
+@{
+    ViewBag.Title = "Ürün Detayları";
+}
+
+<div class="container mt-4" style="background-color: #343a40; padding: 30px; border-radius: 15px; color: #f8f9fa;">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow-lg" style="background-color: #212529; border: none; border-radius: 12px;">
+                <div class="card-header bg-gradient text-white text-center" style="border-radius: 10px 10px 0 0;">
+                    <h4 class="mb-0" style="font-family: 'Arial', sans-serif; font-weight: bold;">Ürün Detayları</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                        <dt class="col-sm-4 text-muted">
+                            @Html.DisplayNameFor(model => model.UrunAdı)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.UrunAdı)
+                        </dd>
+
+                        <dt class="col-sm-4 text-muted">
+                            @Html.DisplayNameFor(model => model.Fiyat)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Fiyat)
+                        </dd>
+
+                        <dt class="col-sm-4 text-muted">
+                            @Html.DisplayNameFor(model => model.StokMiktarı)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.StokMiktarı)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-center" style="border-radius: 0 0 10px 10px;">
+                    <div class="d-flex justify-content-center">
+                        @Html.ActionLink("Ürün Düzenle", "Edit", new { id = Model.UrunId },
+                            new { @class = "btn btn-warning btn-sm me-3", @title = "Ürünü Düzenle", style = "font-weight: bold; border-radius: 25px;" })
+                        @Html.ActionLink("Geri Dön", "Index", null,
+                            new { @class = "btn btn-secondary btn-sm", @title = "Ana Sayfaya Dön", style = "font-weight: bold; border-radius: 25px;" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
